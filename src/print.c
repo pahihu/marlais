@@ -219,6 +219,7 @@ marlais_print_object (Object fd, Object obj, int escaped)
     default:
 	  marlais_error ("print: unknown object type", NULL);
     }
+    fflush(fp);
 }
 
 Object
