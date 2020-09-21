@@ -33,7 +33,7 @@ end method object-princ;
 define method write-number(s :: <stream>, d :: <integer>, #key base = 10)
   let hexi = "0123456789ABCDEF";
   let str-num = make(<deque>);
-  while(d > base)
+  while(d >= base)
     let digit = modulo(d, base);
     push(str-num, hexi[digit]);
     d := floor/(d, base);
