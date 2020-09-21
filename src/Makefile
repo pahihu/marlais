@@ -4,10 +4,14 @@
 
 # see COPYRIGHT for use
 
+INCLUDE_DIR = -I/opt/local32/include
+LIB_DIR = -L/opt/local32/lib
+
 #####
 # initialization file (change this to suite your installation)
 #
-INIT_FILE=/usr/local/share/marlais/init.dylan
+#INIT_FILE=/usr/local/share/marlais/init.dylan
+INIT_FILE=/opt/marlais/share/marlais/init.dylan
 
 #INIT_FILE_FLAG = -DINIT_FILE=\"$(INIT_FILE)\"
 INIT_FILE_FLAG = -DINIT_FILE=\"$(INIT_FILE)\" -DINFIX_INIT_FILE
@@ -85,13 +89,14 @@ MARLAIS_FLAGS = $(SYS_FLAG) \
 	$(MISC_FLAGS) \
 	$(METHOD_CACHING_FLAG) \
 	$(PRECEDENCE_FLAG) \
+	$(INCLUDE_DIR) \
 	 -DVERSION=\"$(VERSION)\"
 
-CC ?= gcc
+CC = gcc -m32
 
 CFLAGS ?= -g $(MARLAIS_FLAGS)
 
-LIBS ?= -lncurses -lreadline -lm -lgc
+LIBS ?= $(LIB_DIR) -lncurses -lreadline -lm -lgc
 
 FLEX ?= flex
 FLEXFLAGS ?= -I
