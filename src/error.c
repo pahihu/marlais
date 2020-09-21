@@ -355,7 +355,7 @@ signal_error_jump ()
 static Object
 enter_debugger (void)
 {
-  return error ("entering debugger", NULL);
+  return marlais_error ("entering debugger", NULL);
 }
 
 Object
@@ -387,9 +387,9 @@ static void
 signal_handler (int sig)
 {
 #ifdef __SunOS_5__
-  error ((char *) _sys_siglist[sig], NULL);
+  marlais_error ((char *) _sys_siglist[sig], NULL);
 #else
-  error (sys_siglist[sig], NULL);
+  marlais_error (sys_siglist[sig], NULL);
 #endif
 }
 
